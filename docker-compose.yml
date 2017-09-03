@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  # this is our kafka cluster.
+  kafka-cluster:
+    image: landoop/fast-data-dev:latest
+    environment:
+      ADV_HOST: 192.168.99.100   # Change to 192.168.99.100 if using Docker Toolbox
+      RUNTESTS: 0                 # Disable Running tests so the cluster starts faster
+    ports:
+      - 2181:2181                 # Zookeeper
+      - 3030:3030                 # Landoop UI
+      - 8081-8083:8081-8083       # REST Proxy, Schema Registry, Kafka Connect ports
+      - 9581-9585:9581-9585       # JMX Ports
+      - 9092:9092                 # Kafka Broker
+
+  # we will use elasticsearch as one of our sinks.
+  # This configuration allows you to start elasticsearch
+  elasticsearch:
+    image: itzg/elasticsearch:2.4.3
+    environment:
+      PLUGINS: appbaseio/dejavu
+      OPTS: -Dindex.number_of_shards=1 -Dindex.number_of_replicas=0
+    ports:
+      - "9200:9200"
+
+  # we will use postgres as one of our sinks.
+  # This configuration allows you to start postgres
+  postgres:
+    image: postgres:9.5-alpine
+    environment:
+      POSTGRES_USER: postgres     # define credentials
+      POSTGRES_PASSWORD: postgres # define credentials
+      POSTGRES_DB: postgres       # define database
+    ports:
+      - 5432:5432                 # Postgres port
