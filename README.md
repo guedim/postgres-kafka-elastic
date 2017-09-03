@@ -12,21 +12,21 @@ https://play-with-docker.com
 ```
 2) Create one instache.  You can create the instances using the [PWD](play-with-docker.com) templates.
 
-3) Download the docker-compose file in the new instance created in the above step:
+3) Download the [docker-compose](https://docs.docker.com/compose/) file in the new instance created in the above step:
 ```sh
 wget https://raw.githubusercontent.com/guedim/postgres-kafka-elastic/master/docker-compose.yml
 ```
 
-4) Start the services (Postgres - Kafka - Elastic):
+4) Start the services ([Postgres](https://www.postgresql.org/) - [Kafka](https://kafka.apache.org/) - Elastick [Elastic Search](https://www.elastic.co/)):
 ```sh
 docker-compose up
 ```
-5) Go to Landoop portal (clic in 3030 port), for example:
+5) Go to [Landoop](http://www.landoop.com/) portal (clic in 3030 port), for example:
 
 ```sh
 http://pwd10-0-28-3-3030.host2.labs.play-with-docker.com/
 ```
-6) In the Landoop portal, create and set up the postgres kafka connector:
+6) In the [Landoop](http://www.landoop.com/) portal, create and set up the Postgres Kafka  using the [JDBC](http://docs.confluent.io/current/connect/connect-jdbc/docs/index.html) connector:
 ```sh
 {
   "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
@@ -39,7 +39,7 @@ http://pwd10-0-28-3-3030.host2.labs.play-with-docker.com/
   "connection.url": "jdbc:postgresql://192.168.99.100:5432/postgres?user=postgres&password=postgres"
 }
 ```
-7) In the Landoop portal, create and set up the kafka elastic sink:
+7) In the [Landoop](http://www.landoop.com/) portal, create and set up the [kafka elastic Sink](http://docs.confluent.io/current/connect/connect-elasticsearch/docs/elasticsearch_connector.html):
 ```sh
 {
   "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
@@ -55,7 +55,7 @@ http://pwd10-0-28-3-3030.host2.labs.play-with-docker.com/
   "topic.schema.ignore": "true"
 }
 ```
-8) Create the table **users** and insert some sample data:
+8) Connect to postgres service and create the table **users** and insert some sample data:
 ```sql
 -- Create the table users
 CREATE TABLE users
@@ -75,7 +75,7 @@ INSERT INTO users (name, age) VALUES ('jamie', 22);
 INSERT INTO users (name, age) VALUES ('jenny', 27);
 ```
 
-9) Finally, you can query the postgres data in the elastic tool, just click in the port 9200 and go to **_plugin/dejavu**:
+9) Finally, you can query the Postgres data in the ElasticSearch tool, just click in the port 9200 and go to **_plugin/dejavu** (dont forget to use the postgres_users index):
 ```sh
 http://192.168.99.100:9200/_plugin/dejavu
 ```
