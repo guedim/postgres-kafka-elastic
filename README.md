@@ -36,6 +36,8 @@ topic.prefix=postgres_
 mode=timestamp+incrementing
 incrementing.column.name=id
 timestamp.column.name=updated_at
+value.converter=org.apache.kafka.connect.json.JsonConverter
+key.converter=org.apache.kafka.connect.json.JsonConverter
 ```
 > Dont forget to change the **connection.url parameter** using the host with the 5432 port
 
