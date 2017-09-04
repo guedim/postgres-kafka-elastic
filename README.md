@@ -24,38 +24,52 @@ docker stack deploy --compose-file docker-compose.yml postgres-kafka-es
 5) Go to [Landoop](http://www.landoop.com/) portal (clic in 3030 port), for example:
 
 ```sh
-http://pwd10-0-28-3-3030.host2.labs.play-with-docker.com/
+http://pwd10-0-7-3-3030.host2.labs.play-with-docker.com/
 ```
 6) In the [Landoop](http://www.landoop.com/) portal, create and set up the Postgres Kafka  using the [JDBC](http://docs.confluent.io/current/connect/connect-jdbc/docs/index.html) connector:
 ```sh
-{
-  "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
-  "mode": "timestamp+incrementing",
-  "timestamp.column.name": "updated_at",
-  "incrementing.column.name": "id",
-  "topic.prefix": "postgres_",
-  "tasks.max": "1",
-  "name": "source-postgres",
-  "connection.url": "jdbc:postgresql://192.168.99.100:5432/postgres?user=postgres&password=postgres"
-}
+name=source-postgres
+connector.class=io.confluent.connect.jdbc.JdbcSourceConnector
+tasks.max=1
+connection.url=jdbc:postgresql://pwd10-0-7-3-5432.host2.labs.play-with-docker.com:5432/postgres?user=postgres&password=postgres
+topic.prefix=postgres_
+mode=timestamp+incrementing
+incrementing.column.name=id
+timestamp.column.name=updated_at
 ```
-7) In the [Landoop](http://www.landoop.com/) portal, create and set up the [kafka elastic Sink](http://docs.confluent.io/current/connect/connect-elasticsearch/docs/elasticsearch_connector.html):
+> Dont forget to change the **connection.url parameter** using the host with the 5432 port
+
+7) In the [Landoop](http://www.landoop.com/) portal, create and set up the [kafka elastic Sink Confluent](http://docs.confluent.io/current/connect/connect-elasticsearch/docs/elasticsearch_connector.html):
 ```sh
-{
-  "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
-  "type.name": "kafka-connect",
-  "topics": "postgres_users",
-  "tasks.max": "1",
-  "topic.key.ignore": "true",
-  "name": "ElasticsearchSinkConnector",
-  "connection.url": "http://192.168.99.100:9200",
-  "key.ignore": "true",
-  "value.converter": "org.apache.kafka.connect.json.JsonConverter",
-  "key.converter": "org.apache.kafka.connect.json.JsonConverter",
-  "topic.schema.ignore": "true"
-}
+name=ElasticsearchSinkConnector
+connector.class=io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
+topics=postgres_users
+tasks.max=1
+connection.url=http://pwd10-0-7-3-9200.host2.labs.play-with-docker.com:9200
+type.name=kafka-connect
+topic.key.ignore=true
+key.ignore=true
+value.converter=org.apache.kafka.connect.json.JsonConverter
+key.converter=org.apache.kafka.connect.json.JsonConverter
+topic.schema.ignore=true
+topic.index.map=REP-SOE.CUSTOMERS:rep-soe.customers
 ```
-8) Connect to postgres service and create the table **users** and insert some sample data:
+> Dont forget to change the **connection.url** parameter using the host with the 9200 port
+
+8) With a Postgres client, connect to  the database using the next credentials:
+```sh
+- User: postgres
+- password: postgres
+- database: postgres
+```
+> You can use the next commands to connect in the PWD terminal:
+> docker service ps postgres-kafka-es
+> docker exec -it POSTGRES_CONTAINER_NAME /bin/bash
+> psql -U postgres -d postgres
+
+And create the table **users** and insert some sample data:
+
+
 ```sql
 -- Create the table users
 CREATE TABLE users
