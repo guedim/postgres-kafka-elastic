@@ -7,9 +7,17 @@ This is a simple sample to get the data from a [Postgres](https://www.postgresql
 
 # Table of contents
 1. [Configuration](#configuration)
-    1. [Sub paragraph](#subparagraph1)
+    1. [Play With Docker](#playwithdocker)
+    2. [Create swarm cluster](#swarmcluster)
+    3. [Get the docker compose file](#dockercompose)
+    4. [Create the services](#services)
+    5. [Landoop Portal tool](#landoop)
+    6. [Kafka JDBC connector](#connector)
+    7. [Kafka ElasticSearch Sink](#sink)
+    8. [Insert data in postgres](#postgres)
+    8. [Take a look and fun](#end)
 2. [Todos](#todos)
-2. [License](#license)
+3. [License](#license)
 
 
 ## This is the introduction <a name="introduction"></a>
