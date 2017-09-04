@@ -10,16 +10,16 @@ This is a simple sample to get the data from a [Postgres](https://www.postgresql
 ```sh
 https://play-with-docker.com
 ```
-2) Create one instache.  You can create the instances using the [PWD](play-with-docker.com) templates.
+2) Create one instache, however to avoid performance issues we recommend you to create a swarm cluster using the [PWD](play-with-docker.com) templates  (3 Managers and 2 Workers  or 5 Managers and no workers).
 
 3) Download the [docker-compose](https://docs.docker.com/compose/) file in the new instance created in the above step:
 ```sh
 wget https://raw.githubusercontent.com/guedim/postgres-kafka-elastic/master/docker-compose.yml
 ```
 
-4) Start the services ([Postgres](https://www.postgresql.org/) - [Kafka](https://kafka.apache.org/) - Elastick [Elastic Search](https://www.elastic.co/)):
+4) Start the services ([Postgres](https://www.postgresql.org/) - [Kafka](https://kafka.apache.org/) - Elastick [Elastic Search](https://www.elastic.co/)) in a [Swarm Mode](https://docs.docker.com/engine/swarm/):
 ```sh
-docker-compose up
+docker stack deploy --compose-file docker-compose.yml postgres-kafka-es
 ```
 5) Go to [Landoop](http://www.landoop.com/) portal (clic in 3030 port), for example:
 
