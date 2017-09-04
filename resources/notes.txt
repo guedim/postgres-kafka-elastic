@@ -17,3 +17,14 @@ Kafka commands:
 
 Docker Swarm
   https://docs.docker.com/engine/swarm/stack-deploy/#set-up-a-docker-registry
+
+
+CDC:
+	https://blog.insightdatascience.com/from-postgresql-to-redshift-with-kafka-connect-111c44954a6a
+	https://www.confluent.io/blog/bottled-water-real-time-integration-of-postgresql-and-kafka/
+	https://www.simple.com/engineering/a-change-data-capture-pipeline-from-postgresql-to-kafka?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_details_shares%3BGGxto4ZKS6y47N%2FsEfyBkQ%3D%3D
+	https://wecode.wepay.com/posts/streaming-databases-in-realtime-with-mysql-debezium-kafka
+	http://debezium.io/docs/connectors/postgresql/
+	https://www.confluent.io/blog/bottled-water-real-time-integration-of-postgresql-and-kafka/
+	https://www.simple.com/engineering/a-change-data-capture-pipeline-from-postgresql-to-kafka?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_details_shares%3BGGxto4ZKS6y47N%2FsEfyBkQ%3D%3D
+	https://www.simple.com/engineering/a-change-data-capture-pipeline-from-postgresql-to-kafka?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recent_activity_details_shares%3BGGxto4ZKS6y47N%2FsEfyBkQ%3D%3D
