@@ -52,7 +52,6 @@ key.ignore=true
 value.converter=org.apache.kafka.connect.json.JsonConverter
 key.converter=org.apache.kafka.connect.json.JsonConverter
 topic.schema.ignore=true
-topic.index.map=REP-SOE.CUSTOMERS:rep-soe.customers
 ```
 > Dont forget to change the **connection.url** parameter using the host with the 9200 port
 
