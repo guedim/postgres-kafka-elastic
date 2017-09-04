@@ -2,7 +2,7 @@
 
 This is a simple sample to get the data from a [Postgres](https://www.postgresql.org/) database,  read the data into [Kafka](https://kafka.apache.org/) and finally put in Elastick [Elastic Search](https://www.elastic.co/)
 
-> This is a simple project using docker containers.
+> This is a simple project using docker swarm mode.
 
 ### Configuration
 
@@ -10,7 +10,13 @@ This is a simple sample to get the data from a [Postgres](https://www.postgresql
 ```sh
 https://play-with-docker.com
 ```
+
+![Play With Docker](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/Docker5Mangers.png "Play With Docker")
+
+
 2) Create one instache, however to avoid performance issues we recommend you to create a swarm cluster using the [PWD](play-with-docker.com) templates  (3 Managers and 2 Workers  or 5 Managers and no workers).
+
+
 
 3) Download the [docker-compose](https://docs.docker.com/compose/) file in the new instance created in the above step:
 ```sh
