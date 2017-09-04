@@ -6,10 +6,11 @@ This is a simple sample to get the data from a [Postgres](https://www.postgresql
 
 
 # Table of contents
-1. [Introduction](#introduction)
-2. [Some paragraph](#paragraph1)
+1. [Configuration](#configuration)
     1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
+2. [Todos](#todos)
+2. [License](#license)
+
 
 ## This is the introduction <a name="introduction"></a>
 Some introduction text, formatted in heading 2 style
@@ -25,7 +26,7 @@ The second paragraph text
 
 
 
-### Configuration
+### Configuration<a name="configuration"></a>
 
 1) Open a web browser and go to [Play With Docker](play-with-docker.com) tool:
 ```sh
@@ -145,12 +146,11 @@ http://192.168.99.100:9200/_plugin/dejavu
 
 
 
-### Todos
+### Todos<a name="todos"></a>
 
  - How to create the sql data
  - Create all the data and configuration automatically
 
-License
+### License<a name="license"></a>
 ----
-
 MIT
