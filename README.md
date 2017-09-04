@@ -16,6 +16,7 @@ https://play-with-docker.com
 
 2) Create one instache, however to avoid performance issues we recommend you to create a swarm cluster using the [PWD](play-with-docker.com) templates  (3 Managers and 2 Workers  or 5 Managers and no workers).
 
+![Play With Docker Template](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/template.png "Play With Docker - Template")
 
 
 3) Download the [docker-compose](https://docs.docker.com/compose/) file in the new instance created in the above step:
@@ -32,6 +33,9 @@ docker stack deploy --compose-file docker-compose.yml postgres-kafka-es
 ```sh
 http://pwd10-0-7-3-3030.host2.labs.play-with-docker.com/
 ```
+
+![Landoop](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/landoop.png "Landoop portal")
+
 6) In the [Landoop](http://www.landoop.com/) portal, create and set up the Postgres Kafka  using the [JDBC](http://docs.confluent.io/current/connect/connect-jdbc/docs/index.html) connector:
 ```sh
 name=source-postgres
@@ -46,6 +50,9 @@ value.converter=org.apache.kafka.connect.json.JsonConverter
 key.converter=org.apache.kafka.connect.json.JsonConverter
 ```
 > Dont forget to change the **connection.url parameter** using the host with the 5432 port
+
+![Landoop - Postgres](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/landoop-postgres.png "Landoop - Postgres")
+
 
 7) In the [Landoop](http://www.landoop.com/) portal, create and set up the [kafka elastic Sink Confluent](http://docs.confluent.io/current/connect/connect-elasticsearch/docs/elasticsearch_connector.html):
 ```sh
@@ -62,6 +69,9 @@ key.converter=org.apache.kafka.connect.json.JsonConverter
 topic.schema.ignore=true
 ```
 > Dont forget to change the **connection.url** parameter using the host with the 9200 port
+
+![Landoop - ElasticSearch](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/landoop-es.png "Landoop - ElasticSearch")
+
 
 8) With a Postgres client, connect to  the database using the next credentials:
 ```sh
@@ -96,10 +106,23 @@ INSERT INTO users (name, age) VALUES ('jamie', 22);
 INSERT INTO users (name, age) VALUES ('jenny', 27);
 ```
 
-9) Finally, you can query the Postgres data in the ElasticSearch tool, just click in the port 9200 and go to **_plugin/dejavu** (dont forget to use the postgres_users index):
+![Postgres - Insert](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/insrt-postgres.png "Postgres - Insert")
+
+
+9) Finally, you can query the Postgres data in the kafka topic or in the ElasticSearch Tool, just click in the port 9200 and go to **_plugin/dejavu** (dont forget to use the postgres_users index):
+
+- In the Kafka Topic
+![Kafka Postgres Topic](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/Topic.png "Kafka Postgres topic")
+
+- In the **dejavu**  ElasticSearch plugin:
+
 ```sh
 http://192.168.99.100:9200/_plugin/dejavu
 ```
+
+![ElasticSearch - Dejavu](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/elastic-dejavu.png "ElasticSearch - Dejavu")
+
+
 
 ### Todos
 
