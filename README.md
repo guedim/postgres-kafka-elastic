@@ -17,7 +17,8 @@ This is a simple sample to get the data from a [Postgres](https://www.postgresql
     8. [Insert data in postgres](#postgres)
     8. [Take a look and fun](#end)
 2. [Todos](#todos)
-3. [License](#license)
+3. [Links](#Links)
+4. [License](#license)
 
 
 ### Configuration<a name="configuration"></a>
@@ -144,6 +145,14 @@ http://192.168.99.100:9200/_plugin/dejavu
 
  - How to create the sql data
  - Create all the data and configuration automatically
+
+### Links<a name="Links"></a>
+
+- https://pgxn.org/dist/jsoncdc/0.0.6/
+- https://github.com/snaga/xlogdump/tree/master/doc
+- https://www.postgresql.org/docs/9.3/static/pgxlogdump.html
+
+
 
 ### License<a name="license"></a>
 ----
